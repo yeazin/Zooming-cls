@@ -36,7 +36,7 @@ pre_save.connect(make_code,sender=ClassRoom)
 # Group member
 class MemberShip(models.Model):
     room = models.ForeignKey(ClassRoom,on_delete=models.CASCADE, null=True)
-    student = models.ForeignKey(Student,on_delete=models.CASCADE, null=True)
+    student = models.ForeignKey(Student,on_delete=models.CASCADE, null=True, related_name='member')
     is_join = models.BooleanField(default=False)
 
     def __str__(self):

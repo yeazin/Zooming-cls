@@ -50,7 +50,7 @@ class SingleClass(View):
         return super().dispatch(request,*args,**kwargs)
 
     def get(self, request,id):
-        room = get_object_or_404(ClassRoom  , id=id) 
+        room = get_object_or_404(ClassRoom  ,id=id) 
         context ={
             'room':room,
         } 
@@ -68,11 +68,15 @@ class JoinRoom(View):
             check_code = ClassRoom.objects.get(code = code)
             user = request.user.students
             class_room = ClassRoom(id = check_code.id )
-            member = MemberShip(room= class_room, student = user )
-            member.is_join = True
-            member.save()
-            messages.success(request,'Welcome to The Class')
-            return redirect('single',id=check_code.id )   
+            if user.member.is_join == True:
+                messages.success(request,'You are Already a member')
+                return redirect('single', id=check_code.id )
+            else:
+                member = MemberShip(room= class_room, student = user )
+                member.is_join = True
+                member.save()
+                messages.success(request,'Welcome to The Class')
+                return redirect('single', id=check_code.id )   
         except ClassRoom.DoesNotExist:
             messages.warning(request,'Sorry The Code Didnot Match. Try Again')
             return redirect('student')
