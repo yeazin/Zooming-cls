@@ -1,0 +1,27 @@
+{% extends 'class/base.html' %}
+
+{% block css %}
+.box{
+    box-shadow: 1px 1px 5px 1px #a9a7a7;
+    border-radius:10px;
+    text-align:center;
+}
+.box img{
+    width:100%;
+    border-radius:5%;
+
+}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row mt-3">
+        {% for s in s%}
+        <div class="col-2 box m-2 p-3">
+            <img src="{{ s.photo.url  }}" alt="">
+            <h4 class="text">{{ s.name }}</h4>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+    

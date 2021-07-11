@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% block title %} {{ user.student.name }} | Meet Classroom {% endblock %}
+
+{% block css %}
+.s_box{
+    
+    position: relative;
+    box-shadow: 2px 1px 7px 1px #e6e6e6;
+    border-radius: 10px;
+    background: rgb(34,193,195);
+    background: linear-gradient(72deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 81%);
+    overflow:hidden;
+    padding:20px;
+}
+.s_box img{
+    position:absolute;
+    top:40%;
+    right:20px;
+    width:20%;
+    height:auto;
+}
+{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="row" style="margin-top:30px; margin:0;">
+
+    <div class="messages" style="position: absolute; top:12%; left:70%; z-index: 1;" >
+        {% for message in messages %}
+            <div class="alert alert-primary" {% if message.tags %}
+                class="{{ message.tags }}"{% endif %}>{{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+    
+        {% endfor %}
+    </div>
+
+    {% for r in room %}
+    <div class="col-md-3 s_box m-4 ">
+            <h4>{{ r.name }}</h4>
+            <img src="https://www.pngarts.com/files/11/Avatar-PNG-Transparent-Image.png" alt="">
+            <span> Class : {{ r.unit }}</span><br>
+            <span> Code : {{ r.code }}</span><br>
+            <a href=""> View Class </a>
+    </div>
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

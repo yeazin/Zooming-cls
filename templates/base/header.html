@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-md navbar-light " style="background-color: #ebf4fb; box-shadow: 0.5px 1px 4px 1px grey;" >
+    <div class="container">
+      {% if user.is_authenticated %}
+      {% if user.is_teacher %}
+      <a class="navbar-brand" href="{% url 'teacher' %}">
+             
+        <span>Meet Classroom </span>
+    </a>
+      {% elif user.is_student %}
+      <a class="navbar-brand" href="{% url 'student' %}">
+             
+        <span>Meet Classroom </span>
+    </a>
+    {% endif %}
+      {% else %}
+      <a class="navbar-brand" href="{% url 'index' %}">
+             
+        <span>Meet Classroom </span>
+    </a>
+      
+      {% endif %}
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                {% if user.is_teacher %}
+                  <li class="nav-item"><a href="{% url 'teacher' %}" class="nav-link"> Dashboard</a></li>
+                {% else %}
+                  <li class="nav-item"><a href="{% url 'student' %}" class="nav-link"> Dashboard</a></li>
+                {% endif %}
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-plus"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% if user.is_teacher %}
+                            <a class="dropdown-item" href="{% url 'create_class' %}">Create Class</a>
+                            {% else %}
+                            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#joinClass">Join Class</a>
+                            {% endif %}
+                          </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}"  class="nav-link">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="joinClass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle"> Paste The Code to join</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <form action="{% url 'join' %}" method="POST">
+              {% csrf_token %}
+                <div class="form-group">
+                  
+                  <input type="text" class="form-control" id="exampleInputEmail1" name='code' aria-describedby="emailHelp" placeholder="Enter the Code">
+                  
+                </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Join</button>
+              </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>

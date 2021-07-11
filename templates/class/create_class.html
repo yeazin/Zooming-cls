@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% block title %} Create Class | Meet Classroom {% endblock %}
+
+{% block content %}
+<div class="row" style="margin: 0 auto;">
+    <div class="col-6" style="padding: 30px; background-color: #ebf4fb; margin-top:20px; border-radius: 10px; text-align: center; "">
+    
+    
+    
+        <h2 class="text-center">Create Class</h2>
+        <br>
+<form action="{% url 'create_class' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" name="name" class="form-control" placeholder="Write the Class Name" required>
+    </div>
+    <div class="form-group">
+        <input type="text" name="unit" class="form-control" placeholder="Give a Class Unit" required>
+    </div>
+    
+    <textarea name="detail" id="" class="form-control" cols="30" rows="10" placeholder="Describe more about the Class" required></textarea>
+    <button type="submit" class="btn btn-primary " style="width:100%; margin: 10px auto;" >Create</button>
+</form>
+
+</div>
+<div class="col-6">
+    {% load static %}
+    <img src="{% static 'design/classroom.png' %}" alt="">
+</div>
+</div>
+{% endblock %}

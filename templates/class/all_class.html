@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+{{ user.name }}
+{% for r in room %}
+{{  r.name }}
+{% endfor %}
+{% endblock %}

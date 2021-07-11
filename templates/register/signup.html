@@ -1,0 +1,104 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="row" style="margin:0 auto;  height:90vh;">
+        <div class="messages" style="position: absolute; top:12%; left:40%; z-index: 1;" >
+            {% for message in messages %}
+                <div class="alert alert-primary" {% if message.tags %}
+                    class="{{ message.tags }}"{% endif %}>{{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+        
+            {% endfor %}
+        </div>
+
+        <div class="col-6" style="padding: 30px; margin-top:20px; " >
+            <h2> Sign Up as A Teacher</h2>
+            <br>
+
+
+                    <!-- {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endif %} -->
+            
+                    <!-- <form method="POST"> -->
+                    <form action="{% url 'signup' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                
+                            <input type="text" name="name" class="form-control" id="email" placeholder="Type Your Name" required>
+                        </div>
+                        <div class="form-group">
+                     
+                            <input type="email" name="username" class="form-control" id="email" placeholder="Type Your Email" required>
+                        </div>
+                        <div class="form-group">
+                          
+                            <input type="password" name="password1" class="form-control" id="password1" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+            
+                            <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary " style="width:100%; margin: 0 auto;" >Sign Up</button>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        Do you already have an account? <a href="{% url 'login' %}">Login here</a>
+                    </div>
+
+
+                    <!--
+                                            <div class="text-center">
+                        or
+                    </div>
+                                           <div class="text-center">
+                       Login with <a href="#">Google</a>
+                    </div>
+                    -->
+ 
+
+
+        </div>
+        <div class="col-6" style="padding: 30px; background-color: #ebf4fb; margin-top:20px; border-radius: 10px; text-align: center; ">
+            <h2> Sign Up as A Student</h2>
+            <br>
+
+
+            <form action="{% url 'student_register' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+    
+                    <input type="text" name="name" class="form-control" id="email" placeholder="Type Your Name" required>
+                </div>
+                <div class="form-group">
+ 
+                    <input type="email" name="username" class="form-control" id="email" placeholder="Type Your Email" required>
+                </div>
+                <div class="form-group">
+   
+                    <input type="password" name="password1" class="form-control" id="password1" placeholder="Type Password" required>
+                </div>
+                <div class="form-group">
+         
+                    <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Your Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="image" class="form-control" id="image" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; margin:0 auto;" >Sign Up</button>
+            </form>
+            <hr>
+            <div class="text-center">
+                Do you already have an account? <a href="{% url 'login' %}">Login here</a>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
