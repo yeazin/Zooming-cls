@@ -69,16 +69,18 @@ class JoinRoom(View):
             user = request.user.students
             class_room = ClassRoom(id = check_code.id )
             member = MemberShip(room= class_room, student = user )
-            check = member.is_join == False
-            if check:
+
+            check = MemberShip.objects.filter(room=class_room, student = user )
+            uncheck = member.is_join = True
+            if check :
                 messages.success(request,'You are Already a member')
-                return redirect('student')
+                return redirect('student') 
             else:
                 member = MemberShip(room= class_room, student = user )
-                member.is_join = True
+                member.is_join = True 
                 member.save()
                 messages.success(request,'Welcome to The Class')
-                return redirect('single', id=check_code.id )   
+                return redirect('single', id=check_code.id )  
         except ClassRoom.DoesNotExist:
             messages.warning(request,'Sorry The Code Didnot Match. Try Again')
             return redirect('student')
