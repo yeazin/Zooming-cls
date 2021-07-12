@@ -68,7 +68,8 @@ class JoinRoom(View):
             check_code = ClassRoom.objects.get(code = code)
             user = request.user.students
             class_room = ClassRoom(id = check_code.id )
-            if user.member.is_join == True:
+            member = MemberShip(room= class_room, student = user )
+            if user.member.is_join == True :
                 messages.success(request,'You are Already a member')
                 return redirect('single', id=check_code.id )
             else:
