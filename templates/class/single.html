@@ -17,6 +17,11 @@
 background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
     padding:30px 100px;
 }
+.box{
+  border-radius: 20px;
+    padding: 10px 10px;
+    box-shadow: 1px 1px 2px 1px #dcd5d5;
+}
 {% endblock %}
 {% block content %}
         <div class="row  mt-3 ">
@@ -67,9 +72,19 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
         </div>
 
         <div class="row mt-3" >
-{% for s in stream %}
-{{ s.post }}<br>
-{% endfor %}
+        <div class="col-10" style="margin: 0 auto;">
+          {% for s in stream %}
+            <div class="row mt-2 box" >
+              <div class="col-2">
+                <img src="{{ s.user.students.photo.url }}" alt="" style="width: 40%; border-radius: 40%;">
+            </div>
+            <div class="col-10">
+              <p>{{ s.post }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
         </div>
 
 

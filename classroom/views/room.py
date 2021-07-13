@@ -49,7 +49,7 @@ class SingleClass(View):
     def get(self, request,id):
         
         room = get_object_or_404(ClassRoom  ,id=id) 
-        stream = room.roomstream_set.all().order_by('id')
+        stream = room.roomstream_set.all().order_by('-created_at')
         context ={
             'room':room,
             'stream':stream,
