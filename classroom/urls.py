@@ -1,5 +1,6 @@
+from django import views
 from django.urls import path
-from .views.room import ViewClassRoom,SingleClass,CreateClassRoom,JoinRoom
+from .views.room import ViewClassRoom,SingleClass,CreateClassRoom,JoinRoom, LeaveClass
 from .views.people import PeopleUnderRoom
 
 urlpatterns =[
@@ -9,4 +10,5 @@ urlpatterns =[
     path('join/class/',JoinRoom.as_view(),name='join'),
 
     path('<str:id>/people/', PeopleUnderRoom.as_view(),name='people'),
+    path('<str:id>/leave/', LeaveClass.as_view(), name='leave'),
 ]

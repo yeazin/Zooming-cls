@@ -47,9 +47,11 @@ class SingleClass(View):
         return super().dispatch(request,*args,**kwargs)
 
     def get(self, request,id):
+        
         room = get_object_or_404(ClassRoom  ,id=id) 
         context ={
             'room':room,
+            'user':request.user.students
         } 
         return render(request,'class/single.html', context)
 
@@ -85,5 +87,10 @@ class LeaveClass(View):
     def dispatch(self,request,*args,**kwargs):
         return super().dispatch(request,*args,**kwargs)
 
-    def get(self, request,*args,**kwargs):
-        pass    
+    def post(self, request,id):
+        user = request.user.students
+        room = get_object_or_404(ClassRoom, id=id)
+        membership = MemberShip(room=room,student=user)
+        membership.delete()
+        messages.warning(request,'You have left the Classroom')
+        return redirect('student')

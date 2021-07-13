@@ -4,6 +4,8 @@
     <a class="nav-item nav-link active" href="#">Stream<span class="sr-only">(current)</span></a>
     <a class="nav-item nav-link" href="#">Files</a>
     <a class="nav-item nav-link" href="{% url 'people' room.id %}">People</a>
+    <a class="nav-item nav-link" href="{% url 'leave' room.id %}">Leave Class </a>
+
   </div>
 {% endblock %}
 {% block css %}
@@ -16,6 +18,19 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
 {% endblock %}
 {% block content %}
         <div class="row  mt-3 ">
+
+            <div class="messages" style="position: absolute; top:12%; left:70%; z-index: 1;" >
+                {% for message in messages %}
+                    <div class="alert alert-primary" {% if message.tags %}
+                        class="{{ message.tags }}"{% endif %}>{{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            
+                {% endfor %}
+            </div>
+
             <div class="col-10 main_box" style="margin:0 auto;" >
                     <h2>{{ room.name }}</h2>
                     <p>{{ room.details }}</p>
@@ -24,11 +39,28 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
         </div>
 
         <div class="row mt-3" >
-            <div class="col-10 main_box" style="margin:0 auto;" >
-                    <form action="">
-                        <input type="text">
-                    </form>
-        </div>
+            <div class="col-10" style="margin: 0 auto;">
+                <div class="row" >
+                    <div class="col-2">
+                        <img src="{{ user.photo.url }}" alt="" style="width: 80%; border-radius: 20%;">
+                    </div>
+                    
+                    <div class="col-10">
+                        <div class="col-14" style="margin:0 auto;" >
+                            <form action="" method="POST">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" type="submit"><i class="fas fa-rocket"></i></button>
+                                  </div>
+                              </div>
+                            </form>
+                    </div>
+        
+                </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="row mt-3" >
