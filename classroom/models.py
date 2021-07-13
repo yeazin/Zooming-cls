@@ -2,7 +2,7 @@ import random
 import uuid
 from django.db import models
 from django.db.models.fields import TextField
-from profiles.models  import Teacher, Student
+from profiles.models  import Teacher, Student, User
 from .utils import unique_code_generate
 from django.db.models.signals import pre_save
 
@@ -58,3 +58,12 @@ class ClassFiles(Time):
         verbose_name = 'Class File'
 
 # forum 
+class RoomStream(Time):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    room = models.ForeignKey(ClassRoom,on_delete=models.SET_NULL,null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    post = models.TextField()
+    is_featured = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.room}|{self.user}|{self.post}|{self.is_featured}"

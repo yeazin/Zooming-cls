@@ -49,8 +49,10 @@ class SingleClass(View):
     def get(self, request,id):
         
         room = get_object_or_404(ClassRoom  ,id=id) 
+        stream = room.roomstream_set.all().order_by('id')
         context ={
             'room':room,
+            'stream':stream,
             'user':request.user.students
         } 
         return render(request,'class/single.html', context)

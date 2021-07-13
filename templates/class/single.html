@@ -49,9 +49,10 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
                     
                     <div class="col-10">
                         <div class="col-14" style="margin:0 auto;" >
-                            <form action="" method="POST">
+                            <form action="{% url 'stream_create' room.id %}" method="POST">
+                              {% csrf_token %}
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                <input type="text" name='post' class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-secondary" type="submit"><i class="fas fa-rocket"></i></button>
                                   </div>
@@ -66,9 +67,9 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
         </div>
 
         <div class="row mt-3" >
-            <div class="col-10 main_box" style="margin:0 auto;" >
-                    <a href="{% url 'people' room.id %}"> People </a>
-        </div>
+{% for s in stream %}
+{{ s.post }}<br>
+{% endfor %}
         </div>
 
 
