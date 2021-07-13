@@ -35,13 +35,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link active" href="#">Stream<span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#">Files</a>
-                    <a class="nav-item nav-link" href="#">People</a>
-                    
-                  </div>
-    
+                {% block class_link %}
+                
+                {% endblock %}
             <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
@@ -103,7 +99,7 @@
 
 <div class="container">
 {% block content %}
-
+    
 {% endblock %}
 </div>
 

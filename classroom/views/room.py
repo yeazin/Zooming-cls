@@ -14,10 +14,7 @@ class CreateClassRoom(View):
         return super().dispatch(request,*args,**kwargs)
     
     def get(self,request):
-        context ={
-
-        }
-        return render(request,'class/create_class.html', context)
+        return render(request,'class/create_class.html')
     
     def post(self,request):
         name = request.POST.get('name')
@@ -68,13 +65,10 @@ class JoinRoom(View):
             check_code = ClassRoom.objects.get(code = code)
             user = request.user.students
             class_room = ClassRoom(id = check_code.id )
-            member = MemberShip(room= class_room, student = user )
-
             check = MemberShip.objects.filter(room=class_room, student = user )
-            uncheck = member.is_join = True
             if check :
                 messages.success(request,'You are Already a member')
-                return redirect('student') 
+                return redirect('single', id=check_code.id) 
             else:
                 member = MemberShip(room= class_room, student = user )
                 member.is_join = True 
@@ -87,4 +81,9 @@ class JoinRoom(View):
 
 # leave Class
 class LeaveClass(View):
-    pass
+    @method_decorator(login_required(login_url='login'))
+    def dispatch(self,request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+    def get(self, request,*args,**kwargs):
+        pass    
