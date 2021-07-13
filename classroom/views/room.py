@@ -87,10 +87,10 @@ class LeaveClass(View):
     def dispatch(self,request,*args,**kwargs):
         return super().dispatch(request,*args,**kwargs)
 
-    def post(self, request,id):
+    def get(self, request,id):
         user = request.user.students
         room = get_object_or_404(ClassRoom, id=id)
-        membership = MemberShip(room=room,student=user)
+        membership = MemberShip.objects.filter(student=user,room=room)
         membership.delete()
         messages.warning(request,'You have left the Classroom')
         return redirect('student')
