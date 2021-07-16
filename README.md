@@ -1,3 +1,2 @@
 # Zooming cls ( Google Classroom Clone )
-#### Under Development 
-##### Comming Soon 
+![original](readme/comming.png)
