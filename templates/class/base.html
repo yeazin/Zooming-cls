@@ -25,7 +25,7 @@
 
 
 
-    <nav class="navbar navbar-expand-md navbar-light " style="background-color: #ebf4fb; box-shadow: 0.5px 1px 4px 1px grey;" >
+    <nav class="navbar navbar-expand-md navbar-light " style="background-color: #ffffff; box-shadow: 0.5px 1px 4px 1px grey;" >
         <div class="container">
             <a class="navbar-brand" href="{% url 'index' %}">
                  
@@ -38,7 +38,7 @@
                 {% block class_link %}
                 
                 {% endblock %}
-            <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a href="" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-plus"></i></a>
@@ -62,8 +62,9 @@
                         </li>
                     {% endif %}
                 </ul>
-            </div>
-        </div>
+                </div>
+                </div>
+
         </nav>
     
     

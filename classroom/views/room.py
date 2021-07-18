@@ -53,7 +53,7 @@ class SingleClass(View):
         context ={
             'room':room,
             'stream':stream,
-            'user':request.user.students
+            'user':request.user
         } 
         return render(request,'class/single.html', context)
 

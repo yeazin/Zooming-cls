@@ -16,6 +16,7 @@ class PeopleUnderRoom(View):
         room = get_object_or_404(ClassRoom, id=id)
         students = room.student.all().order_by('name')
         context ={
+            'room':room,
             's' :students
         }
         return render (request,'class/people.html',context)
