@@ -42,7 +42,7 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
                 {% endfor %}
             </div>
 
-            <div class="col-10 main_box" style="margin:0 auto;" >
+            <div class="col-11 main_box" style="margin:0 auto;" >
                     <h2>{{ room.name }}</h2>
                     <p>{{ room.details }}</p>
                     <h5 style="color:white;">Code : {{ room.code }}</h5>
@@ -51,7 +51,7 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
 
           <!-- New Design-->
         <div class="row mt-2">
-          <div class="col-10" style="margin: 0 auto;">
+          <div class="col-11" style="margin: 0 auto;">
             <div class="row">
               <div class="col-3">
                 <div class="filebox ">
@@ -69,6 +69,16 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
                     <button type="submit"> <i class="fas fa-rocket "></i></button>
                   </form>
                 </div>
+                
+                <div style="margin-top: 50px;">
+                  {% for s in stream %}
+                  <div class="stream">
+                    <img src="{{ s.user.students.photo.url }}" alt="">
+                    <p>{{s.post }}</p>
+                  </div>
+                  {% endfor %}
+                </div>
+                
               </div>
             </div>
           </div>
@@ -76,47 +86,7 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
 
 
           <!-- End of New Design -->
-        <div class="row mt-3" >
-            <div class="col-10" style="margin: 0 auto;">
-                <div class="row" >
-                    <div class="col-2">
-                        <img src="{{ user.photo.url }}" alt="" style="width: 80%; border-radius: 20%;">
-                    </div>
-                    
-                    <div class="col-10">
-                        <div class="col-14" style="margin:0 auto;" >
-                            <form action="{% url 'stream_create' room.id %}" method="POST">
-                              {% csrf_token %}
-                            <div class="input-group mb-3">
-                                <input type="text" name='post' class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-secondary" type="submit"><i class="fas fa-rocket"></i></button>
-                                  </div>
-                              </div>
-                            </form>
-                    </div>
-        
-                </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row mt-3" >
-        <div class="col-10" style="margin: 0 auto;">
-          {% for s in stream %}
-            <div class="row mt-2 box" >
-              <div class="col-2">
-                <img src="{{ s.user.students.photo.url }}" alt="" style="width: 40%; border-radius: 40%;">
-            </div>
-            <div class="col-10">
-              <p>{{ s.post }}</p>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-
-        </div>
+       
 
 
 

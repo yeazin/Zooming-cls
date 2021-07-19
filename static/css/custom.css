@@ -14,6 +14,7 @@
     position: relative;
     height: auto;
     overflow:visible;
+    
 
 }
 .sendbox form{
@@ -50,4 +51,22 @@
 }
 .sendbox button i{
     font-size: 23px;
+}
+.stream{
+    margin:5px;
+    background-color: white;
+    border: 0.0625rem solid #dadce0;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    
+}
+.stream img{
+    width:10%;
+    border-radius: 10px;
+}
+.stream p{
+    margin: 5px 20px;
 }
