@@ -1,4 +1,6 @@
+
 {% extends 'base/base.html' %}
+{% load static %}
 {% block title %} {{ user.student.name }} | Meet Classroom {% endblock %}
 {% block css %}
 .s_box{
@@ -36,19 +38,29 @@
         {% endfor %}
     </div>
 
-
+<!--
     {% for r in room %}
     <div class="col-md-3 s_box m-4 ">
-        
             <h4>{{ r.name }}</h4>
             <img src="https://www.pngarts.com/files/11/Avatar-PNG-Transparent-Image.png" alt="">
             <span>{{ r.name }}</span><br>
             <a href="{% url 'single' r.id %}"> view Class </a>
     </div>
-    {% endfor %}
+    {% endfor %} -->
 
+<!-- New design -->
+{% for r in room %}
+<div class="col-md-3 m-4 class_box">
+    <img src="{{ r.cover.url }}" alt="">
+    <img src="https://www.pngarts.com/files/11/Avatar-PNG-Transparent-Image.png" class="img" alt="">
+  
+        <h4>{{ r.name }}</h4>
+        <span>{{ r.unit }}</span>
+        <br>
+        <a href="{% url 'single' r.id %}"> View Class </a>
+</div>
 
-
+{% endfor %}
 </div>
 
 {% endblock %}

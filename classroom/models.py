@@ -17,7 +17,7 @@ class Time(models.Model):
 class ClassRoom(Time):
     id = models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
     name = models.CharField(max_length=100,blank=False, null=True)
-    cover = models.ImageField(upload_to='others/cover/', default='others/class.jpeg',null=True)
+    cover = models.ImageField(upload_to='others/cover/', default='others/class.jpg',null=True)
     unit = models.CharField(max_length=100, null=True)
     code = models.CharField(max_length=8,blank=True, null=True) # random 
     details = models.TextField()
@@ -44,7 +44,6 @@ class MemberShip(models.Model):
         return f"{ self.room } | { self.student }"
 
 # class Files 
-
 class ClassFiles(Time):
     id = models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
     teacher = models.ForeignKey(Teacher,on_delete=models.SET_NULL, null=True)

@@ -1,3 +1,4 @@
+{% load static %}
 /* All essential css of Website */
 body{
     background-color: #edf8fe;
@@ -63,7 +64,7 @@ footer{
     width: 100%;
 }
 .sendbox{
-    background-color: white;
+    background-color:transparent;
     /* border: 0.0625rem solid #dadce0; */
     padding: 1rem;
     width: 100%;
@@ -98,12 +99,14 @@ footer{
     border:none;
     border-bottom: 2px solid gray;
     border-radius: 0px;
+    background-color: transparent;
 }
 
 .sendbox input[type=text]:focus{
     border:none;
     border-bottom: 2px solid gray;
     border-radius: 0px;
+    background: transparent;
 }
 .sendbox button i{
     font-size: 23px;
@@ -125,4 +128,38 @@ footer{
 }
 .stream p{
     margin: 5px 20px;
+}
+
+/* student dashbaord css of Class box */
+.class_box{
+    background-color: white;
+    border: 0.0625rem solid #dadce0;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: auto;
+}
+.class_box h4{
+    margin-top:5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 0;
+}
+.class_box img{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin: none;
+}
+.class_box .img{
+    position:absolute;
+    top:35%;
+    right:20px;
+    width:20%;
+    height:auto;
+}
+.class_box a{
+    margin-top: 3px !important;
 }

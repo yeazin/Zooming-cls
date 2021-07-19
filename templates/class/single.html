@@ -16,11 +16,26 @@
 {% block css %}
 .main_box{
     border-radius:20px;
-    background: rgb(63,94,251);
-background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity:;
+    
+    top: 0;
+    width: 100%;
+
+    background-image: radial-gradient( 25rem 18.75rem ellipse at bottom right,#4285f4, transparent );
+    overflow:hidden;
     padding:30px 100px;
+    position:relative;
+   
+    
     
 }
+.main_box h2{
+  z-index:3;
+}
+
 .box{
   border-radius: 20px;
     padding: 10px 10px;
@@ -30,7 +45,7 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
 {% block content %}
         <div class="row  mt-3 ">
 
-            <div class="messages" style="position: absolute; top:12%; left:70%; z-index: 1;" >
+            <div class="messages" style="position: absolute; top:12%; left:70%; z-index: 200;" >
                 {% for message in messages %}
                     <div class="alert alert-primary" {% if message.tags %}
                         class="{{ message.tags }}"{% endif %}>{{ message }}
@@ -42,7 +57,7 @@ background: linear-gradient(41deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%
                 {% endfor %}
             </div>
 
-            <div class="col-11 main_box" style="margin:0 auto;" >
+            <div class="col-11 main_box" style="margin:0 auto; background-image: url('{{ room.cover.url}}');" >
                     <h2>{{ room.name }}</h2>
                     <p>{{ room.details }}</p>
                     <h5 style="color:white;">Code : {{ room.code }}</h5>

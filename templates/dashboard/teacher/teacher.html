@@ -38,6 +38,7 @@
     
         {% endfor %}
     </div>
+    <!--
 
     {% for r in room %}
     <div class="col-md-3 s_box m-4 ">
@@ -48,7 +49,21 @@
             <a href=""> View Class </a>
     </div>
     {% endfor %}
+-->
+    <!-- New design -->
+    {% for r in room %}
+<div class="col-md-3 m-4 class_box">
+    <img src="{{ r.cover.url }}" alt="">
+    <img src="https://www.pngarts.com/files/11/Avatar-PNG-Transparent-Image.png" class="img" alt="">
+  
+        <h4>{{ r.name }}</h4>
+        <span> Class : {{ r.unit }}</span><br>
+        <span> Code : <strong>{{ r.code }}</strong> </span><br>
 
+        <a href="{% url 'single' r.id %}"> View Class </a>
+</div>
+
+{% endfor %}
 
 </div>
 
