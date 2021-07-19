@@ -34,6 +34,11 @@ nav{
 nav .logo{
     width: 30%; height: 37px;
 }
+footer{
+    background-color: #ebf4fb; color:#8a8989; float: left;width: 100%;bottom: 0;
+    position: fixed;z-index: 200;
+    
+}
 /* end code of essential */
 .main_section {
     padding:100px 50px;
@@ -42,6 +47,7 @@ nav .logo{
 .main_section h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bolder;
+    font-size: 4rem;
 }
 
 .main_section button{

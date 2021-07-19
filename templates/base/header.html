@@ -4,12 +4,12 @@
       {% if user.is_teacher %}
       <a class="navbar-brand" href="{% url 'teacher' %}">
              {% load static %}
-        <img src="{% static 'others/logo.png' %}" alt="">
+             <img src="{% static 'others/logo.png' %}" class="logo"  alt="" >
     </a>
       {% elif user.is_student %}
       <a class="navbar-brand" href="{% url 'student' %}">
              
-        <span>Meet Classroom </span>
+        <img src="{% static 'others/logo.png' %}" class="logo"  alt="" >
     </a>
     {% endif %}
       {% else %}
