@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md navbar-light " style="background-color: #ebf4fb; box-shadow: 0.5px 1px 4px 1px grey;" >
+<nav class="navbar navbar-expand-md navbar-light "  >
     <div class="container">
       {% if user.is_authenticated %}
       {% if user.is_teacher %}
       <a class="navbar-brand" href="{% url 'teacher' %}">
-             
-        <span>Meet Classroom </span>
+             {% load static %}
+        <img src="{% static 'others/logo.png' %}" alt="">
     </a>
       {% elif user.is_student %}
       <a class="navbar-brand" href="{% url 'student' %}">
@@ -15,7 +15,7 @@
       {% else %}
       <a class="navbar-brand" href="{% url 'index' %}">
              
-        <span>Meet Classroom </span>
+        <img src="{% static 'others/logo.png' %}" class="logo"  alt="" >
     </a>
       
       {% endif %}
@@ -28,9 +28,9 @@
         <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                 {% if user.is_teacher %}
-                  <li class="nav-item"><a href="{% url 'teacher' %}" class="nav-link"> Dashboard</a></li>
+                  <li class="nav-item"><a href="{% url 'teacher' %}" class="nav-link"><i class="fas fa-tachometer-alt"></i>  Dashboard</a></li>
                 {% else %}
-                  <li class="nav-item"><a href="{% url 'student' %}" class="nav-link"> Dashboard</a></li>
+                  <li class="nav-item"><a href="{% url 'student' %}" class="nav-link"><i class="fas fa-tachometer-alt"></i>  Dashboard</a></li>
                 {% endif %}
                     <li class="nav-item dropdown">
                         <a href="" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-plus"></i></a>
@@ -43,14 +43,14 @@
                           </div>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'logout' %}"  class="nav-link">Logout</a>
+                        <a href="{% url 'logout' %}"  class="nav-link"> <i class="fas fa-power-off"></i> Logout</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-                    </li>
+                        <a class="nav-link btn btn-outline-success" href="{% url 'signup' %}"><i class="fas fa-user-plus"></i> Sign Up </a>
+                    </li>&nbsp;
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link btn btn-primary" href="{% url 'login' %}"> <i class="fas fa-sign-in-alt"></i> Login</a>
                     </li>
                 {% endif %}
             </ul>
