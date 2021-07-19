@@ -4,12 +4,50 @@
     -webkit-border-radius: 0.5rem;
     border-radius: 0.5rem;
     padding: 1rem;
-    width: 15.125rem;
+    width: 100%;
 }
 .sendbox{
     background-color: white;
-    border: 0.0625rem solid #dadce0;
+    /* border: 0.0625rem solid #dadce0; */
     padding: 1rem;
     width: 100%;
+    position: relative;
+    height: auto;
+    overflow:visible;
 
+}
+.sendbox form{
+    width: 85%;
+    position: absolute;
+    right:0;
+}
+.sendbox img{
+    width: 10%;
+    position: absolute;
+    left: 10px;
+    border-radius: 10px;
+
+}
+.sendbox button{
+    margin: 1px 10px;
+    border:none;
+    background: transparent;
+    padding: 7px;
+    
+}
+
+.sendbox input[type=text]{
+    width: 85%;
+    border:none;
+    border-bottom: 2px solid gray;
+    border-radius: 0px;
+}
+
+.sendbox input[type=text]:focus{
+    border:none;
+    border-bottom: 2px solid gray;
+    border-radius: 0px;
+}
+.sendbox button i{
+    font-size: 23px;
 }
