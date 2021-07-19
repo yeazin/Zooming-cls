@@ -25,7 +25,7 @@
 
 
 
-    <nav class="navbar navbar-expand-md navbar-light " style="background-color: #ffffff; box-shadow: 0.5px 1px 4px 1px grey; " >
+    <nav class="navbar navbar-expand-md navbar-light " style="background-color: #ffffff; box-shadow: 0.5px 1px 4px 1px grey; position:sticky; top:0;left:0;right:0; z-index: 1; " >
         <div class="container" >
             <a class="navbar-brand" href="{% url 'index' %}">
                  
@@ -98,12 +98,12 @@
 
 
 
-<div class="container">
+<div class="container" style="z-index: 2;">
 {% block content %}
     
 {% endblock %}
 </div>
-<footer class="mainfooter" role="contentinfo" style="background-color: #ebf4fb; color:#8a8989; bottom: 0; left:0; right:0; position: fixed;">
+<footer class="mainfooter" role="contentinfo" style="background-color: #ebf4fb; color:#8a8989; bottom: 0; left:0; right:0;position:fixed; margin-top:20px;">
     <div class="footer-middle" style=" padding-top: 1em;">
     <div class="container">
       <div class="row">

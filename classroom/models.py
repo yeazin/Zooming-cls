@@ -67,3 +67,14 @@ class RoomStream(Time):
 
     def __str__(self):
         return f"{self.room}|{self.user}|{self.post}|{self.is_featured}"
+    
+# Comment model of Stream
+class Comment(Time):
+    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    stream = models.ForeignKey(RoomStream, on_delete=models.DO_NOTHING, null=True)
+    comment = models.TextField()
+
+    def __str__(self):
+        return f"{self.user} commented on {self.stream}"
+
