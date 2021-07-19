@@ -1,0 +1,15 @@
+.filebox{
+    background-color: white;
+    border: 0.0625rem solid #dadce0;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 15.125rem;
+}
+.sendbox{
+    background-color: white;
+    border: 0.0625rem solid #dadce0;
+    padding: 1rem;
+    width: 100%;
+
+}
