@@ -64,9 +64,12 @@ class RoomStream(Time):
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     post = models.TextField()
     is_featured = models.BooleanField(default=False)
+    
 
     def __str__(self):
         return f"{self.room}|{self.user}|{self.post}|{self.is_featured}"
+    
+    
     
 # Comment model of Stream
 class Comment(Time):

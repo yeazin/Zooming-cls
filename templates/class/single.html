@@ -90,12 +90,22 @@
                 <div style="margin-top: 50px;">
                   {% for s in stream %}
                   <div class="stream">
-                    <img src="{{ s.user.students.photo.url }}" alt="">
-                    <p>{{s.post }}</p>
-                    <hr>
-                    <a href="" data-toggle="collapse" data-target="#collapseExample{{ s.id }}" aria-expanded="false" aria-controls="collapseExample{{ s.id }}"> Reply </a>
+                    <div style="display: inline-flex;">
+                      <img src="{{ s.user.students.photo.url }}" alt="">
+                      <h5 style="margin-left:10px;"><strong>{{ s.user.students.name }}</strong></h5> 
+                      
+                      <p style="color:gray">{{ s.created_at|timesince }} ago </p>
+                      
+                    </div>
+                    {% if s.post|length < 10 %}
+                    <p> yes it is true</p>
+                    {% else %}
+                    <p style="padding:1.5rem;">{{s.post }}</p>
+                    {% endif %}
+                      <hr>
+                      <a href="" data-toggle="collapse" data-target="#collapseExample{{ s.id }}" aria-expanded="false" aria-controls="collapseExample{{ s.id }}"> Reply </a>
                   </div>
-
+                    <!-- Reply box -->
                   <div class="collapse"  id="collapseExample{{ s.id }}" style="margin-left:50px ;">
                     <div class="card card-body">
                       <form action="{% url 'comment_create' s.id %}" method="POST" style="display: flex;">
