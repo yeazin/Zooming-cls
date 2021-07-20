@@ -1,5 +1,6 @@
 <div align="center">
-<p>Welocme to </p>
+<img src="media/others/logo.png" width="100px">
+
 <h1> Zooming cls ( Google Classroom Clone )</h2>
 <img src="readme/home.png">
 <hr>
