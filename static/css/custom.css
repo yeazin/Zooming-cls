@@ -119,15 +119,19 @@ footer{
     border-radius: 0.5rem;
     padding: 1rem;
     width: 100%;
-    display: flex;
+    
     
 }
 .stream img{
     width:10%;
     border-radius: 10px;
+    float: left;
 }
 .stream p{
     margin: 5px 20px;
+}
+.stream p{
+    clear: both;
 }
 
 /* student dashbaord css of Class box */
