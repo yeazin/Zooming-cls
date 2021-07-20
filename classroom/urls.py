@@ -14,6 +14,7 @@ urlpatterns =[
     path('<str:id>/leave/', LeaveClass.as_view(), name='leave'),
 
     path('<str:id>/create/stream',CreateStream.as_view(),name='stream_create'),
+    #path('stream/<str:id>/view/',SingleStream.as_view(),name='single_stream'),
 
     path('<str:id>/create/comment', CreateComment.as_view(),name='comment_create'),
 ]

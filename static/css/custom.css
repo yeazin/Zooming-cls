@@ -130,9 +130,7 @@ footer{
 .stream p{
     margin: 5px 20px;
 }
-.stream p{
-    clear: both;
-}
+
 
 /* student dashbaord css of Class box */
 .class_box{
