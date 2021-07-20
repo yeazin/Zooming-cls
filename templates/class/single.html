@@ -64,6 +64,8 @@
             </div>
         </div>
 
+
+
           <!-- New Design-->
         <div class="row mt-2">
           <div class="col-11" style="margin: 0 auto;">
@@ -90,6 +92,14 @@
                   <div class="stream">
                     <img src="{{ s.user.students.photo.url }}" alt="">
                     <p>{{s.post }}</p>
+
+                    <a href="" data-toggle="collapse" data-target="#collapseExample{{ s.id }}" aria-expanded="false" aria-controls="collapseExample{{ s.id }}"> Reply </a>
+                    <div class="collapse" id="collapseExample{{ s.id }}">
+                      <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      </div>
+                    </div>
+                    
                   </div>
                   {% endfor %}
                 </div>
@@ -98,6 +108,7 @@
             </div>
           </div>
         </div>
+
 
 
           <!-- End of New Design -->
