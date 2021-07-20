@@ -94,16 +94,16 @@
                     <p>{{s.post }}</p>
 
                     <a href="" data-toggle="collapse" data-target="#collapseExample{{ s.id }}" aria-expanded="false" aria-controls="collapseExample{{ s.id }}"> Reply </a>
-                    <div class="collapse" id="collapseExample{{ s.id }}">
-                      <div class="card card-body">
-                        <form action="{% url 'comment_create' s.id %}" method="POST">
-                          {% csrf_token %}
-                          <input type="text" name="comment">
-                          <button type="submit"> COmment </button>
-                        </form>
-                      </div>
-                    </div>
+                  </div>
 
+                  <div class="collapse"  id="collapseExample{{ s.id }}" style="margin-left:50px ;">
+                    <div class="card card-body">
+                      <form action="{% url 'comment_create' s.id %}" method="POST" style="display: flex;">
+                        {% csrf_token %}
+                        <input type="text" name="comment" class="form-control" placeholder="Add Comment" style="margin-right:3px;">
+                        <button class="btn btn-primary btn-sm" type="submit"> Add Comment </button>
+                      </form>
+                    </div>
                   </div>
                   {% endfor %}
                 </div>
