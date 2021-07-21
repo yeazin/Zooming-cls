@@ -109,14 +109,13 @@ class SendMail(View):
         return render (request,'dashboard/teacher/send_mail.html')
 
     def post(self,request):
-        
         email = request.POST.get('email')
         code = request.POST.get('code')
         send_mail(
-            'Join The Class',
-            'Hi yeasin join the class here and code is ' + code + ' get now',
-            settings.EMAIL_HOST_USER,
-            [email],
+            'Join The Class', # Subjects here
+            'Hi yeasin join the class here and \n code is ' + code + ' get now', # Body Messages
+            settings.EMAIL_HOST_USER, # email sender
+            [email], # to reciever email 
             fail_silently=False,
         )
         return redirect('teacher')
