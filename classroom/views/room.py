@@ -6,6 +6,9 @@ from profiles.models import Teacher, Student
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
+# Email Configure 
+from django.core.mail import send_mail
+from django.conf import settings
 
 #create classroom
 class CreateClassRoom(View):
@@ -96,3 +99,25 @@ class LeaveClass(View):
         membership.delete()
         messages.warning(request,'You have left the Classroom')
         return redirect('student')
+
+class SendMail(View):
+    @method_decorator(login_required(login_url='login'))
+    def dispatch(self,request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+    def get(self,request):
+        return render (request,'dashboard/teacher/send_mail.html')
+
+    def post(self,request):
+        
+        email = request.POST.get('email')
+        code = request.POST.get('code')
+        send_mail(
+            'Join The Class',
+            'Hi yeasin join the class here and code is ' + code + ' get now',
+            settings.EMAIL_HOST_USER,
+            [email],
+            fail_silently=False,
+        )
+        return redirect('teacher')
+        messages.success('Email has Sent')

@@ -1,6 +1,6 @@
 from django import views
 from django.urls import path
-from .views.room import ViewClassRoom,SingleClass,CreateClassRoom,JoinRoom, LeaveClass
+from .views.room import ViewClassRoom,SingleClass,CreateClassRoom,JoinRoom, LeaveClass, SendMail
 from .views.people import PeopleUnderRoom
 from .views.stream import CreateStream, CreateComment
 
@@ -17,4 +17,7 @@ urlpatterns =[
     #path('stream/<str:id>/view/',SingleStream.as_view(),name='single_stream'),
 
     path('<str:id>/create/comment', CreateComment.as_view(),name='comment_create'),
+
+    #send email route
+    path('send/code/via/mail',SendMail.as_view(),name='send'),
 ]
