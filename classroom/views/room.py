@@ -8,8 +8,11 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 # Email Configure 
-from django.core.mail import send_mail
+#from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 from django.conf import settings
+
 
 #create classroom
 class CreateClassRoom(View):
@@ -112,6 +115,22 @@ class SendMail(View):
     def post(self,request):
         email = request.POST.get('email')
         code = request.POST.get('code')
+        user = request.user
+        body = render_to_string('email.html',{
+            'code':code,
+            'user':user
+        })
+        mail = EmailMessage(
+            subject ='Join the ClassRoom Now',
+            body = body,
+            from_email= settings.EMAIL_HOST_USER,
+            to = [email]
+        )
+        mail.content_subtype = "HTML"
+        mail.send()
+        messages.success(request,'Your Email has been SENT')
+        return redirect('teacher')
+        '''
         send_mail(
             'Join The Class', # Subjects here
             'code', # Body Messages
@@ -122,7 +141,7 @@ class SendMail(View):
         messages.success(request,'Email has Sent')
         return redirect('teacher')
        
-        '''
+        
         if request.POST.get('continue'):
             email = request.POST.get('email')
             code = request.POST.get('code')
