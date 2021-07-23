@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
 from django.contrib import messages
@@ -113,10 +114,41 @@ class SendMail(View):
         code = request.POST.get('code')
         send_mail(
             'Join The Class', # Subjects here
-            'Hi yeasin join the class here and \n code is ' + code + ' get now', # Body Messages
+            'code', # Body Messages
             settings.EMAIL_HOST_USER, # email sender
             [email], # to reciever email 
             fail_silently=False,
         )
+        messages.success(request,'Email has Sent')
         return redirect('teacher')
-        messages.success('Email has Sent')
+       
+        '''
+        if request.POST.get('continue'):
+            email = request.POST.get('email')
+            code = request.POST.get('code')
+            send_mail(
+                'Join The Class', # Subjects here
+                'Hi yeasin join the class here and \n code is ' + code + ' get now', # Body Messages
+                settings.EMAIL_HOST_USER, # email sender
+                [email], # to reciever email 
+                fail_silently=False,
+            )
+            messages.success('Email has Sent')
+            return redirect('send')
+            
+        elif request.POST.get('back'):
+            email = request.POST.get('email')
+            code = request.POST.get('code')
+            send_mail(
+                'Join The Class', # Subjects here
+                'Hi yeasin join the class here and \n code is ' + code + ' get now', # Body Messages
+                settings.EMAIL_HOST_USER, # email sender
+                [email], # to reciever email 
+                fail_silently=False,
+            )
+            messages.success('Email has Sent') 
+            return redirect('teacher')
+            
+        else:
+            return HttpResponse ('Hey that an error')    
+        '''       
