@@ -149,8 +149,10 @@ EMAIL_HOST_USER = 'yeazin@zohomail.com'
 EMAIL_USE_SSL = True 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+
 # Repository Owned By Nazrul Islam Yeasin 
-# Facebook : https://facebook.com/yeariha.farsin
+# Facebook : https://facebook.com/yeazin.io
+# Twitter  : https://twitter.com/_yeazin
 # Github : https://github.com/yeazin
 # linked In : https://www.linkedin.com/in/yeazin/
 # website : yeazin.github.io
