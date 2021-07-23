@@ -145,7 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'yeazin@zohomail.com'
-#EMAIL_HOST_PASSWORD = 'iiCF*G$Kqg882SJ'
+EMAIL_HOST_PASSWORD = 'iiCF*G$Kqg882SJ'
 EMAIL_USE_SSL = True 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 

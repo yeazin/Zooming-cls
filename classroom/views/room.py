@@ -120,16 +120,30 @@ class SendMail(View):
             'code':code,
             'user':user
         })
-        mail = EmailMessage(
+
+        if request.POST.get('con'):
+            mail = EmailMessage(
+                subject ='Join the ClassRoom Now',
+                body = body,
+                from_email= settings.EMAIL_HOST_USER,
+                to = [email]
+                )
+            mail.content_subtype = "HTML"
+            mail.send()
+            messages.success(request,'Your Emails has been SENT')
+            return redirect('send')
+        else:
+            mail = EmailMessage(
             subject ='Join the ClassRoom Now',
             body = body,
             from_email= settings.EMAIL_HOST_USER,
             to = [email]
-        )
-        mail.content_subtype = "HTML"
-        mail.send()
-        messages.success(request,'Your Email has been SENT')
-        return redirect('teacher')
+            )
+            mail.content_subtype = "HTML"
+            mail.send()
+            messages.success(request,'Your Email has been SENT')
+            return redirect('teacher')
+
         '''
         send_mail(
             'Join The Class', # Subjects here
