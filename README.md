@@ -1,5 +1,5 @@
 <div align="center">
-<img src="media/others/logo.png" width="100px">
+<img src="media/others/logo.png" width="120px">
 
 <h1> Zooming cls ( Google Classroom Clone )</h2>
 <img src="readme/home.png">
