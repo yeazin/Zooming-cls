@@ -6,6 +6,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate, login , logout
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 # model import 
 from profiles.models import Student, Teacher, User
 from classroom.models import ClassRoom
@@ -86,6 +87,7 @@ class StudentRegister(View):
         return redirect ('login')
 
 # Login View
+'''
 class LoginView(View):
     def get(self,request,*args,**kwargs):
         return render(request,'register/login.html')
@@ -108,7 +110,32 @@ class LoginView(View):
             else:
                 messages.warning(request,'Sorry Your Password Didnot Match')
                 return redirect('login')    
-            
+'''
+class LoginView(View):
+    def get(self,request,*args,**kwargs):
+        return render(request,'register/login.html')   
+
+    def post(self,request,*args,**kwargs):
+        detect = request.POST.get('detect')
+        passowrd = request.POST.get('password')
+        
+        match = User.objects.filter(
+            Q(username = detect)|
+            Q(email = detect)|
+            Q(teacher__phone = detect)|
+            Q(student__phone= detect)
+        ).first()
+        if match:
+            user = authenticate(email = match.email, passowrd=passowrd)
+            if user is not None:
+                login(request,user)
+                if user.email.is_student:
+                    return redirect('teacher')
+                else:
+                    return redirect('student')
+            else:
+                messages.warning(request,'Sorry Your Email Didnot Match')
+                return redirect('login')
 #Logout View 
 class LogoutView(View):
     @method_decorator(login_required(login_url='login'))
