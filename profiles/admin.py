@@ -3,5 +3,9 @@ from .models import User, Teacher, Student
 
 # Register your models here.
 admin.site.register(User)
-admin.site.register(Teacher)
-admin.site.register(Student)
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ['name','user','phone']
+admin.site.register(Teacher,TeacherAdmin)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ['name','user','phone']
+admin.site.register(Student,StudentAdmin)

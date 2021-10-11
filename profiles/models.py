@@ -37,7 +37,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    username = None
+    username = models.CharField(null=True,max_length=200,verbose_name='Username',unique=True,blank=True)
     email = models.EmailField(_('email_address'), unique=True)
 
     password = models.CharField(max_length=50)
@@ -61,15 +61,23 @@ class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True, related_name='teachers')
     image = models.ImageField(null=True, blank=True, upload_to='teacher/')
     name = models.CharField(max_length=100, null=True)
+    phone = models.IntegerField(verbose_name='Phone Number',null=True,blank=True)
     
     def __str__(self):   
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Teacher'
 
 class Student(models.Model):
     id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True, related_name='students')
     name = models.CharField(max_length=100, null=True)
     photo = models.ImageField(null=True, blank=True, upload_to='student/')
+    phone = models.IntegerField(null=True,blank=True,verbose_name='Phone Number')
     
     def __str__(self):
         return f"{self.user}"
+
+    class Meta:
+        verbose_name_plural = 'Student'
