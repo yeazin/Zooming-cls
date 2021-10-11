@@ -111,31 +111,35 @@ class LoginView(View):
                 messages.warning(request,'Sorry Your Password Didnot Match')
                 return redirect('login')    
 '''
+
 class LoginView(View):
     def get(self,request,*args,**kwargs):
         return render(request,'register/login.html')   
 
     def post(self,request,*args,**kwargs):
-        detect = request.POST.get('detect')
+        detect = request.POST.get('username')
         passowrd = request.POST.get('password')
         
         match = User.objects.filter(
             Q(username = detect)|
-            Q(email = detect)|
-            Q(teacher__phone = detect)|
-            Q(student__phone= detect)
+            Q(email = detect)
+            # Q(teachers__phone = detect)|
+            # Q(students__phone= detect)
         ).first()
         if match:
-            user = authenticate(email = match.email, passowrd=passowrd)
+            user = authenticate  (username=match.email, passowrd=passowrd)
             if user is not None:
                 login(request,user)
-                if user.email.is_student:
+                if user.is_student:
                     return redirect('teacher')
                 else:
                     return redirect('student')
             else:
                 messages.warning(request,'Sorry Your Email Didnot Match')
                 return redirect('login')
+        else:
+            messages.warning(request,'Sorry Doesn`t Match')
+            return redirect('login')
 #Logout View 
 class LogoutView(View):
     @method_decorator(login_required(login_url='login'))
