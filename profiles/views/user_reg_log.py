@@ -131,6 +131,7 @@ class LoginView(View):
             user = authenticate(request,username=email, password=passowrd)
             if user is not None:
                 login(request,user)
+                return redirect('/')
                 if user.is_student:
                     return redirect('student')
                 else:

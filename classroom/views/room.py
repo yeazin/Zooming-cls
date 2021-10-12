@@ -6,7 +6,8 @@ from classroom.models import ClassRoom, MemberShip
 from profiles.models import Teacher, Student
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-
+# importing custom decorators
+from src.decorators import SingleClassForbidden
 # Email Configure 
 #from django.core.mail import send_mail
 from django.core.mail import EmailMessage
@@ -48,6 +49,7 @@ class ViewClassRoom(View):
         return render(reqeust,'class/all_class.html',context)
 
 # single class
+@method_decorator(SingleClassForbidden,name='dispatch')
 class SingleClass(View):
     @method_decorator(login_required(login_url='login'))
     def dispatch(self,request,*args,**kwargs):
