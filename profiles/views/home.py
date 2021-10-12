@@ -12,6 +12,7 @@ from classroom.models import ClassRoom
 # Class Index
 class Index(View):
     def get(self, request,*args,**kwargs):
+        # if request user is student
         if request.user.is_authenticated:
             if request.user.is_teacher:
                 return redirect('teacher')
