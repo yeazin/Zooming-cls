@@ -12,12 +12,10 @@ from classroom.models import ClassRoom
 # Class Index
 class Index(View):
     def get(self, request,*args,**kwargs):
-        '''
         if request.user.is_authenticated:
-            mail_check = User.objects.filter(email = request.user.email)
-            if mail_check.is_teacher:
-                    return redirect('teacher')
-            elif mail_check.is_student:
-                    return redirect('student')
-        '''
+            if request.user.is_teacher:
+                return redirect('teacher')
+            else:
+                return redirect('student')
+
         return render(request,'index.html')
