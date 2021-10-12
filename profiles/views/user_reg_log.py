@@ -127,13 +127,14 @@ class LoginView(View):
             # Q(students__phone= detect)
         ).first()
         if match:
-            user = authenticate  (username=match.email, passowrd=passowrd)
+            email = match.email
+            user = authenticate(request,username=email, password=passowrd)
             if user is not None:
                 login(request,user)
                 if user.is_student:
-                    return redirect('teacher')
-                else:
                     return redirect('student')
+                else:
+                    return redirect('teacher')
             else:
                 messages.warning(request,'Sorry Your Email Didnot Match')
                 return redirect('login')
